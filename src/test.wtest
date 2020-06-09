@@ -1,6 +1,7 @@
 import otrosRodados.*
 import traffic.*
 import dependencias.*
+import pedidos.*
 
 test "dependencias: deportes (45 empleados) y cultura (31 empleados)cachito forma parte de la flota de ambas dependencias." {
 	//DEPORTES
@@ -52,4 +53,18 @@ test "dependencias: deportes (45 empleados) y cultura (31 empleados)cachito form
 	
 	assert.equals(25,deportes.capacidadFaltante())
 	assert.equals(5,cultura.capacidadFaltante())
-}//la traffic me tira error no se por que, esta igual que antes
+	
+	const pedido1 = new Pedido(distanciaARecorrer= 960,tiempoMaximo=8,
+		cantidadPasajeros=4,coloresIncompatibles=#{"azul","negro"})
+	const pedido2 = new Pedido(distanciaARecorrer= 1000,tiempoMaximo=2,
+		cantidadPasajeros=2,coloresIncompatibles=#{"negro"})
+	deportes.pedidos([pedido1,pedido2])
+	deportes.relajarTodosLosPedidos()
+	
+	assert.that(deportes.puedeSatisfacerElPedido(pedido1))
+	assert.notThat(deportes.puedeSatisfacerElPedido(pedido2))
+	
+	assert.equals(9,pedido1.tiempoMaximo())
+	assert.equals(3,pedido2.tiempoMaximo())
+	
+}

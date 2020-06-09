@@ -2,14 +2,13 @@ import wollok.game.*
 import colores.*
 class  ChevroletCorsa {
 	var property color
-	var property position
+	var property position = game.at(0,0)
 	var property image = "autitorojo.png"
-	var property posicionesPisadas = []
+	var property posicionesPisadas =  []
 	
 	method setImage(colorImagen){
 		image = colorImagen
-	}
-		
+	}		
 	method capacidad(){
 		return 4
 	}	
@@ -21,6 +20,7 @@ class  ChevroletCorsa {
 	}
 	method moveteIzquierda(){
 		self.position(self.position().left(1))
+		posicionesPisadas.add(position)
 	}
 	
 	method moveteArriba(){
@@ -30,24 +30,29 @@ class  ChevroletCorsa {
 	
 	method moveteAbajo(){
 		self.position(self.position().down(1))
+		posicionesPisadas.add(position)
 	}
 	method moveteDerecha(){
 		self.position(self.position().right(1))
+		posicionesPisadas.add(position)
 	}
 	
 	method moveteA(unaPosicion){
 		self.position(unaPosicion)
+		posicionesPisadas.add(position)
 	}
 	method pasoPor(posicion){
 		return posicionesPisadas.contains(posicion)
 	}
-	method pasoPorFila(numero){
-		/*const posT = new Position(x = 0, y = numero) 
+	method pasoPorColumna(numero){
+		/*const posT = new Position(x = numero, y = 0) 
 		return posicionesPisadas.map({posicion=> posicion.toString()}).contains(posT.toString())*/
-		return posicionesPisadas.any({ posicion=> posicion.y() == numero})
+		/*el comentado lo hice yo y el de abajo me ayudo un compañero no recordaba el mensaje position.x() */
+		return posicionesPisadas.any({ posicion=> posicion.x() == numero})
 	}
 	method recorrioFilas(lista_de_numeros){		
-		return posicionesPisadas.map({posicion=>posicion.y()})
+	/*no lo pude resolver */
+	
 	}
 		
 }

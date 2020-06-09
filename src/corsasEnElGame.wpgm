@@ -4,7 +4,8 @@ import colores.*
 
 program corsasEnElGame {
 	// hacer las inicializaciones necesarias 
-	const cachito = new ChevroletCorsa(color="rojo",image="autitorojo.png",position=game.at(0,0))
+	const cachito = new ChevroletCorsa(color="rojo",image="autitorojo.png",
+			position=game.at(0,0))
 	game.title("Corsas")
 	game.width(15)
 	game.height(15)
@@ -15,17 +16,13 @@ program corsasEnElGame {
 	keyboard.left().onPressDo ({cachito.moveteIzquierda()})	
 	keyboard.right().onPressDo ({cachito.moveteDerecha()})
 	keyboard.a().onPressDo({cachito.setImage(azul.image())})
-	keyboard.b().onPressDo({if (cachito.image()== beige.image()){cachito.setImage(blanco.image())}
-		else
-			cachito.setImage(beige.image())})
+	keyboard.b().onPressDo({if (cachito.image()== beige.image()){
+							cachito.setImage(blanco.image())
+							}
+							else cachito.setImage(beige.image())})								
 	keyboard.n().onPressDo({cachito.setImage(negro.image())})
 	keyboard.v().onPressDo({cachito.setImage(verde.image())})
 	keyboard.r().onPressDo({cachito.setImage(rojo.image())})
-	//keyboard.m().onPressDo({game.say(cachito, "")}
 	game.start()
-	//keyboard.a().onpressD({cachito.image()="autitoazul.png")})
-	/*keyboard.b
-	keyboard.
-	keyboard
-	*/
+
 }

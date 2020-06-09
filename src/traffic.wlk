@@ -1,7 +1,7 @@
 object traffic {
 	var interiorDeTraffic
 	var motorDeTraffic	
-	const color = "blanco"
+	const property color = "blanco"
 	
 	method tipoDeInterior(){
 		return interiorDeTraffic
@@ -18,7 +18,7 @@ object traffic {
 	method velocidadMaxima(){
 		return motorDeTraffic.velocidadMaxima()
 	}
-	method capacidadDePasajeros() {
+	method capacidad() {
 		return interiorDeTraffic.capacidad()
 	}
 }

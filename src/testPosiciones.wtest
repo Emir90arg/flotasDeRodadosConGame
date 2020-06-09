@@ -1,0 +1,25 @@
+import otrosRodados.*
+import wollok.game.*
+test "consulta de posiciones  (3,5) ,  (3.6) ,  (3,7)  y  (4,7) " {
+	
+	const cachito = new ChevroletCorsa(color="rojo",position=game.at(0,0))
+	const posicion1 =  new Position(x=3,y=6)
+	const posicion2 =  new Position(x=3,y=5)
+	const posicion3 =  new Position(x=3,y=7)
+	const posicion4 =  new Position(x=4,y=7)
+	const posicion5 = new Position(x=7,y=8)
+	cachito.moveteA(posicion1)
+	cachito.moveteA(posicion2)
+	cachito.moveteA(posicion3)
+	cachito.moveteA(posicion4)
+	
+	assert.notThat(cachito.pasoPor(posicion5))
+	assert.that(cachito.pasoPor(posicion4))
+	
+	assert.notThat(cachito.pasoPorColumna(1))
+	assert.notThat(cachito.pasoPorColumna(2))
+	assert.that(cachito.pasoPorColumna(3))
+	assert.that(cachito.pasoPorColumna(4))
+	assert.notThat(cachito.pasoPorColumna(5))
+
+}

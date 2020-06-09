@@ -1,0 +1,55 @@
+import otrosRodados.*
+import traffic.*
+import dependencias.*
+
+test "dependencias: deportes (45 empleados) y cultura (31 empleados)cachito forma parte de la flota de ambas dependencias." {
+	//DEPORTES
+	const deportes = new Dependencia()
+	const cachito = new ChevroletCorsa()	//1300kg	capacidad 4	vel 150
+	const emir = new ChevroletCorsa()		//1300kg	capacidad 4	vel	150
+	cachito.image("autitorojo.png")
+	const raul = new ChevroletCorsa()		//1300kg	capacidad 4	vel	150
+	const beto = new AutoEspecial(color="beige",capacidad=5,peso=1200,velocidadMaxima=160)
+	const jorge= new RenaultKwid()			//1350kg	capacidad 3	vel	120
+	deportes.setEmpleados(45)
+	cachito.color("rojo")
+	raul.color("azul")
+	emir.color("verde")
+	deportes.agregarAFlota(cachito)
+	deportes.agregarAFlota(raul) 
+	deportes.agregarAFlota(jorge)
+	deportes.agregarAFlota(emir)
+	deportes.agregarAFlota(beto)
+	//CULTURA
+	const cultura = new Dependencia()
+	cultura.setEmpleados(31)
+	const julian= new RenaultKwid()			//1350kg	capacidad 3	vel	120
+	const rodrigo= new RenaultKwid()		//1350kg	capacidad 3	vel	120
+	const nicolas= new RenaultKwid()		//1200kg	capacidad 4	vel	110
+	nicolas.quitarTanqueAdicional()	
+	traffic.configurarInterior(interiorPopular)			//capacidad 12  
+	traffic.configurarMotor(motorBataton)				//vel 80km bataton 
+	cultura.agregarAFlota(cachito)			//1300kg	capacidad 4 vel 150
+	cultura.agregarAFlota(julian)
+	cultura.agregarAFlota(rodrigo)
+	cultura.agregarAFlota(nicolas)
+	cultura.agregarAFlota(traffic)
+		
+	assert.equals(6450,deportes.pesoTotalFlota())
+	assert.equals(10700,cultura.pesoTotalFlota())
+	
+	assert.that(deportes.estaBienEquipada())
+	assert.notThat(cultura.estaBienEquipada())
+	
+	assert.equals(7,deportes.capacidadTotalEnColor("azul"))
+	assert.equals(10,cultura.capacidadTotalEnColor("azul"))
+	
+	assert.equals("beige",deportes.colorDelRodadoMasRapido())
+	assert.equals("rojo",cultura.colorDelRodadoMasRapido())
+	
+	assert.that(deportes.esGrande()) 
+	assert.notThat(cultura.esGrande()) 
+	
+	assert.equals(25,deportes.capacidadFaltante())
+	assert.equals(5,cultura.capacidadFaltante())
+}//la traffic me tira error no se por que, esta igual que antes

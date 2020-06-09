@@ -1,0 +1,17 @@
+import otrosRodados.*
+import dependencias.*
+import pedidos.*
+import colores.*
+import wollok.game.*
+test "cachito puede satisfacer un pedido de 960 kms con tiempo máximo de 8 horas 
+		para 4 pasajeros donde los colores incompatibles son azul y negro." {
+
+	const pedido1 = new Pedido(distanciaARecorrer= 960,tiempoMaximo=8,cantidadPasajeros=4,coloresIncompatibles=#{"azul","negro"})
+	const pos = new Position(x=0,y=0)
+	const cachito = new ChevroletCorsa(color="rojo",position=pos)
+	assert.that(pedido1.puedeSatisfacer(cachito))
+	const pedido2 = new Pedido(distanciaARecorrer= 960,tiempoMaximo=8,cantidadPasajeros=6,coloresIncompatibles=#{"azul","negro"})
+	assert. notThat(pedido2.puedeSatisfacer(cachito))
+	const pedido3 = new Pedido(distanciaARecorrer= 960,tiempoMaximo=8,cantidadPasajeros=4,coloresIncompatibles=#{"azul","negro","rojo"})
+	assert. notThat(pedido3.puedeSatisfacer(cachito))
+}
